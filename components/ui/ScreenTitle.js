@@ -14,8 +14,8 @@ export default ScreenTitle;
 
 const styles = StyleSheet.create({
   screenTitle: {
-    fontSize: 30,
-    fontWeight: "bold",
+    fontSize: 28,
+    fontFamily: "NotoSerif_700Bold",
     color: Colors.brownDark,
     borderWidth: 3,
     borderColor: Colors.brownDark,

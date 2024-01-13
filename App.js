@@ -5,18 +5,61 @@ import BackgroundImage from "./assets/images/backgroundImage.jpg";
 import Colors from "./constants/colors";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
+import GameOverScreen from "./screens/GameOverScreen";
+import {
+  useFonts,
+  NotoSerif_400Regular,
+  NotoSerif_700Bold,
+  NotoSerif_400Regular_Italic,
+  NotoSerif_700Bold_Italic,
+} from "@expo-google-fonts/noto-serif";
 
 const App = () => {
   const [userNumber, setUserNumber] = useState();
+  const [gameOver, setGameOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
+
+  let [fontsLoaded, fontError] = useFonts({
+    NotoSerif_400Regular,
+    NotoSerif_700Bold,
+    NotoSerif_400Regular_Italic,
+    NotoSerif_700Bold_Italic,
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   const confirmNumberHandler = (selectedNumber) => {
     setUserNumber(selectedNumber);
+    setGameOver(false);
+  };
+
+  const gameOverHandler = () => {
+    setGameOver(true);
+  };
+
+  const startNewGameHandler = () => {
+    setUserNumber(null);
+    setGuessRounds(0);
   };
 
   let screen = <StartGameScreen onConfirmNumber={confirmNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} />;
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
+  }
+
+  if (gameOver && userNumber) {
+    screen = (
+      <GameOverScreen
+        userNumber={userNumber}
+        roundNumber={guessRounds}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (

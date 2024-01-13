@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   outerContainer: {
     borderRadius: 8,
     overflow: "hidden",
+    width: 150,
   },
 
   innerContainer: {
@@ -34,7 +35,9 @@ const styles = StyleSheet.create({
   },
 
   btnText: {
+    textAlign: "center",
     fontSize: 20,
+    fontWeight: "600",
     color: Colors.brownDark,
   },
   pressed: {
