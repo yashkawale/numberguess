@@ -13,6 +13,7 @@ import {
   NotoSerif_400Regular_Italic,
   NotoSerif_700Bold_Italic,
 } from "@expo-google-fonts/noto-serif";
+import { StatusBar } from "expo-status-bar";
 
 const App = () => {
   const [userNumber, setUserNumber] = useState();
@@ -35,8 +36,9 @@ const App = () => {
     setGameOver(false);
   };
 
-  const gameOverHandler = () => {
+  const gameOverHandler = (numberOfRounds) => {
     setGameOver(true);
+    setGuessRounds(numberOfRounds);
   };
 
   const startNewGameHandler = () => {
@@ -63,20 +65,23 @@ const App = () => {
   }
 
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={[Colors.brownMedium, Colors.brownLight]}
-    >
-      <ImageBackground
+    <>
+      <StatusBar style="dark" />
+      <LinearGradient
         style={styles.container}
-        imageStyle={styles.backgroundImage}
-        source={BackgroundImage}
-        resizeMode="cover"
-        blurRadius={1}
+        colors={[Colors.brownMedium, Colors.brownLight]}
       >
-        <SafeAreaView style={styles.container}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          style={styles.container}
+          imageStyle={styles.backgroundImage}
+          source={BackgroundImage}
+          resizeMode="cover"
+          blurRadius={1}
+        >
+          <SafeAreaView style={styles.container}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 };
 

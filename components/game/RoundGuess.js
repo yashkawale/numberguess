@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Colors from "../../constants/colors";
 
 const RoundGuess = ({ roundNumber, guess }) => {
   return (
@@ -16,7 +17,7 @@ export default RoundGuess;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
     marginTop: 10,
     padding: 10,
     borderRadius: 8,
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
   },
 
   guessList: {
+    color: Colors.brownDark,
     fontSize: 18,
     fontFamily: "NotoSerif_400Regular",
     textAlign: "center",
@@ -36,6 +38,6 @@ const styles = StyleSheet.create({
 
   guess: {
     fontSize: 20,
-    color: "purple",
+    color: "red",
   },
 });
